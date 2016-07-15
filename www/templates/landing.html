@@ -1,12 +1,26 @@
 <ion-view view-title="Landing Page" hide-back-button="true">
-  <ion-nav-buttons></ion-nav-buttons>
+  <ion-nav-bar class="view-navigation">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+    <ion-nav-title>
+      <span>Landing</span>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+      <a class="button button-clear button-light" ui-sref="lobby">
+        Skip
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
   <ion-content class="padding"><br><br><br><br>
     <button class="button button-block button-calm" ui-sref="login">
-Testing  it again      
+Log In
 </button>
     <button class="button button-block button-calm" ui-sref="register">
-          Register
+Register
 </button>
+
+    <button type="register" class="button button-block button-balanced" ui-sref="register">
+            Register </button><br>
 
 
   </ion-content>

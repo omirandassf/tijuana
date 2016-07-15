@@ -1,6 +1,5 @@
 angular.module('starter.controllers')
-    .controller('LandingCtrl', ['$scope', function($scope) {
-        alert("Yes Its inside the controller");
+    .controller('landingCtrl', ['$scope', function($scope) {
         var deploy = new Ionic.Deploy();
         deploy.setChannel("dev");
         

@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers','ksSwiper','ngCordova','ion-google-place','RESTServices'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers','ksSwiper','ngCordova','ion-google-place','RESTServices'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -28,13 +28,18 @@ angular.module('starter', ['ionic', 'starter.controllers','ksSwiper','ngCordova'
 
       .state('landing', {
         url: '/',
-        templateUrl: 'templates/landing.html'
-        // controller: 'loginCtrl'
+        templateUrl: 'templates/landing.html',
+        controller: 'landingCtrl'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
       })
       .state('register', {
         url: '/register',
         templateUrl: 'templates/register.html',
-        // controller:'registerCtrl'
+        controller:'registerCtrl'
       })
       .state('lobby', {
         url: '/lobby',
@@ -50,10 +55,6 @@ angular.module('starter', ['ionic', 'starter.controllers','ksSwiper','ngCordova'
         url: '/doctors',
         templateUrl: 'templates/doctors.html',
         // controller:'doctorsCtrl'
-      })
-      .state('search', {
-        url: '/search',
-        templateUrl: 'templates/search.html'
       })
       .state('registerDoctors', {
         url: '/registerDoctors',

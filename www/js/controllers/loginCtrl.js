@@ -1,10 +1,10 @@
 angular.module('starter.controllers')
-    .controller('LoginCtrl', ['$scope', 'SSFUsersRest', '$state', '$window', 'IonicPushService', function($scope, SSFUsersRest, $state, $window, IonicPushService) {
+    .controller('loginCtrl', ['$scope', 'SSFUsersRest', '$state', '$window',  function($scope, SSFUsersRest, $state, $window) {
 
         $scope.user = {};
 
         $scope.signIn = function(form) {
-            SSFUsersRest.display($scope.user).then(function(response) {
+            SSFUsersRest.login($scope.user).then(function(response) {
                 // handle different responses and decide what happens next
                 if (response.status == 200) {
                     $window.localStorage.token = response.data.id;
@@ -28,7 +28,6 @@ angular.module('starter.controllers')
 
             });
 
-            IonicPushService.registerForPush();
         };
 
     }]);

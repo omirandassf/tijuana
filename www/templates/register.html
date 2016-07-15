@@ -3,7 +3,7 @@
     <ion-nav-back-button>
     </ion-nav-back-button>
     <ion-nav-title>
-      <span>Sign Up with Email</span>
+      <span>Register</span>
     </ion-nav-title>
     <ion-nav-buttons side="right">
       <a class="button button-clear button-light" ui-sref="lobby">
@@ -21,16 +21,16 @@
     </div>
     <div class="row form-wrapper">
       <div class="col">
-        <form name="signup_form" class="" novalidate>
+        <form name="signup_form" ng-submit="signIn(signup_form)" class="" novalidate>
           
           <div class="form-fields-outer list list-inset">
             
             <label class="item item-input">
-              <input type="text" placeholder="First Name" name="first_name" ng-model="user.first_name" required>
+              <input type="text" placeholder="First Name" name="first_name" ng-model="user.firstName" required>
             </label>
             
             <label class="item item-input">
-              <input type="text" placeholder="Last Name" name="last_name" ng-model="user.last_name" required>
+              <input type="text" placeholder="Last Name" name="last_name" ng-model="user.lastName" required>
             </label>
 
             <label class="item item-input">
@@ -41,20 +41,20 @@
               <input type="password" placeholder="Password" name="password" ng-model="user.password" required show-hide-input>
             </label>
 
-          </div>
 
           <ion-checkbox id="Animals" name="Animals" ng-model="ModelData.Registration" />Admin Registration</ion-checkbox>
 
           <div class="form-group" ng-show="ModelData.Registration">
             
             <label class="item item-input" show-hide-container>            
-              <input type="number" placeholder="Contact Number" name="contact_number" ng-model="user.contact_number" required>
+              <input type="number" placeholder="Contact Number" name="contact_number" ng-model="user.phoneNumber" required>
             </label>
             
             <label class="item item-input" show-hide-container>            
               <input type="text" placeholder="Website" name="website" ng-model="user.website">
             </label>
 
+          </div>
 
           </div>
 

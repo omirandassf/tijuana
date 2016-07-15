@@ -3,7 +3,7 @@ angular.module("RESTServices", [])
         var loginService = this;
         
                         //points to backend
-        var apiUrl = "Enter StrongLoop Url";
+        var apiUrl = "https://myapp-oscar521.c9users.io/explorer";
         loginService.post = function(newUserData) {
             return $http({
                 url: apiUrl,

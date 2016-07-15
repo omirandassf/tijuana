@@ -1,22 +1,14 @@
 angular.module('starter.controllers')
-
-.controller('registerCtrl', function($scope) {
-    
-    
-    
-});
-
-angular.module('starter.controllers')
-    .controller('RegisterCtrl', ['$scope', 'SSFUsersRest', '$state','$window','IonicPushService',
-    function($scope, SSFUsersRest, $state,$window,IonicPushService) {
+    .controller('registerCtrl', ['$scope', 'SSFUsersRest', '$state','$window',
+    function($scope, SSFUsersRest, $state,$window) {
 
         $scope.user = {};
-        $scope.signupForm = function(form) {
+        $scope.signIn = function(form) {
                 if (form.$invalid) {
                     return alert("Please complete the form before proceeding.");
                 }
 
-                SSFUsersRest.post($scope.user).then(function(response) {
+                SSFUsersRest.register($scope.user).then(function(response) {
                     // handle different responses and decide what happens next
                     if (response.status == 200) {
                         $window.localStorage.token=response.data.token;
@@ -37,7 +29,6 @@ angular.module('starter.controllers')
 
 
 
-         IonicPushService.registerForPush();   
         };
 
 
