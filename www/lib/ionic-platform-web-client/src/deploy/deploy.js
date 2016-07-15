@@ -10,8 +10,9 @@ var NO_PLUGIN = "IONIC_DEPLOY_MISSING_PLUGIN";
 var INITIAL_DELAY = 1 * 5 * 1000;
 var WATCH_INTERVAL = 1 * 60 * 1000;
 
-export class Deploy {
 
+export class Deploy {
+  
   /**
    * Ionic Deploy
    *
@@ -20,14 +21,16 @@ export class Deploy {
    *
    * Base Usage:
    *
-   *    Ionic.io();
-   *    var deploy = new Ionic.Deploy();
-   *    deploy.check().then(null, null, function(hasUpdate) {
-   *      deploy.update();
-   *    });
+  *    Ionic.io();
+  *    var deploy = new Ionic.Deploy();
+  *    deploy.check().then(null, null, function(hasUpdate) {
+  *      deploy.update();
+  *    });
    *
    * @constructor
    */
+   
+   
   constructor() {
     var self = this;
     this.logger = new Logger({
