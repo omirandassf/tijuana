@@ -1,0 +1,57 @@
+/* Empty. Add your own CSS if you like */
+
+.card, .list-inset {
+  background-color: #101010;
+}
+
+/*.scroll-content {*/
+/*  background-color: #2B2B2B;*/
+/*}*/
+
+/*.item, .item-complex .item-content, .item-radio .item-content {*/
+/*  border-color: #4C4C4C;*/
+/*  background-color: #2B2B2B;*/
+/*  color: #D0D0D0;*/
+/*}*/
+
+
+/*.item.item-divider {*/
+/*  background-color: #404040;*/
+/*}*/
+
+/*.item.item-body {*/
+/*  background-color: #313030;*/
+/*}*/
+
+.item h2,h3,h4{
+  text-align:center;
+  color:blue;
+}
+
+
+.card-background-page ion-card {
+  position: absolute;
+  text-align: center;
+}
+.card-background-page .card-title {
+  position: absolute;
+  top: 65%;
+  font-size: 2.0em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+.card-background-page .card-subtitle {
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 15%;
+  width: 100%;
+  color: #fff;
+}
+.card-background-page .card-price {
+  font-size: 1.0em;
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  color: #fff;
+}

@@ -1,0 +1,30 @@
+<div class="bar bar-header">
+    <button class="button icon-left ion-home">Home</button>
+    <div class="h1 title">Lobby</div>
+</div>
+
+<div class="bar bar-subheader">
+    <label class="item item-input">
+<i class="icon ion-search placeholder-icon"></i>
+<input type="text" placeholder="Search">
+</label>
+</div>
+
+<ion-view>
+<ion-content>
+<br><br><br>
+    <ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="4" space-between="2" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}"  on-ready="onReadySwiper(swiper)">
+    	<ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+    		<img ng-src="img/puppy-{{s}}.jpg" width="100%">
+    	</ks-swiper-slide>			
+    </ks-swiper-container>
+
+    <ion-item class="item-text-wrap">
+    Tijuana is the largest city in Baja California and on the Baja California Peninsula and center of the Tijuana metropolitan area, part of the international San Diego–Tijuana metropolitan area. As an industrial
+    and financial center of Mexico,Tijuana exerts a strong influence on economics, education, culture, art, and politics. As the city has become a leading center in the country, so has the surrounding metropolitan area, a major industrial and paramount
+    metropolis in northwestern Mexico. Currently one of the fastest growing metropolitan areas in Mexico, Tijuana maintains global city status. As of 2015, the city of Tijuana had a population of 1,696,923
+    </ion-item>
+
+
+</ion-content>
+</ion-view>

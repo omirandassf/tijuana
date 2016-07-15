@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>My App</title>
+
+  
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="lib/angular-chart.js/dist/angular-chart.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  
+  <!--Adding the swiper css-->
+  <link href="lib/swiper/dist/css/swiper.min.css" rel="stylesheet">
+
+<!--Script for google-->
+<!-- google places api -->
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5CktKWA1CqVrbMNfXPYYjw_drM_QsSU&amp;sensor=false&amp;libraries=places" <script=""></script>
+  
+ <!-- include spec files here... -->
+  <script src="spec/geocode-options.js"></script>  
+    
+    
+    <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="lib/angular-chart.js/dist/angular-chart.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    -->
+ 
+  
+  <script src="lib/swiper/dist/js/swiper.js"></script>
+  <!--<script src="../bower_components/angular/angular.js"></script>-->
+  <script src="lib/angular-swiper/dist/angular-swiper.js"></script>	
+
+
+
+  <!-- scripts from Chart and Angular Chart-->
+  <!--<script src="lib/Chart.js/Chart.js"></script>-->
+  <!--<script src="lib/angular-chart.js/dist/angular-chart.js"></script>-->
+
+
+
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="js/ng-cordova.min.js"></script>
+  <script src="cordova.js"></script>
+
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+  
+  <!--Controllers-->
+  <script src="js/controllers/starterControllers.js"></script>
+  <script src="js/controllers/landingCtrl.js"></script>
+  <script src="js/controllers/lobbyCtrl.js"></script>
+  <script src="js/controllers/doctorsCtrl.js"></script>
+  <script src="js/controllers/eventsCtrl.js"></script>
+  <script src="js/controllers/registerCtrl.js"></script>
+  <script src="js/controllers/registerDoctorsCtrl.js"></script>
+  <script src="js/controllers/registerEventsCtrl.js"></script>
+
+  
+  <!--Services-->
+  <script src="js/services/ion-google-place.js"></script>
+  
+  <!--Rest Service-->
+<script src="js/RESTServices/SSFUsersRest.js"></script>
+<script src="js/RESTServices/EventMgrRest.js"></script>
+
+
+  
+
+
+
+
+</head>
+
+<body ng-app="starter">
+
+  
+  
+  <ion-nav-view>
+  </ion-nav-view>
+
+  <ion-footer-view>
+<div class="tabs tabs-icon-top">
+        <a class="tab-item active" ui-sref="doctors">
+          <i class="icon ion-android-favorite-outline"></i> Doctors
+        </a>
+        <a class="tab-item" ui-sref="events">
+          <i class="icon ion-android-calendar"></i> Events
+        </a>
+        <a class="tab-item">
+          <i class="icon ion-gear-a"></i> Settings
+        </a>
+      </div>
+  </ion-footer-view>
+
+</body>
+
+</html>
