@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-.controller('lobbyCtrl', function($scope) {
+.controller('lobbyCtrl',['$scope','$window','SSFUsersRest','$state', function($scope,$window,SSFUsersRest,$state) {
+    
     $scope.swiper = {};
  
     $scope.onReadySwiper = function (swiper) {
@@ -13,4 +14,12 @@ angular.module('starter.controllers')
             console.log('slide end');
         });     
     };
-});
+    
+    $scope.logOut=function(){
+         SSFUsersRest.logOut();
+         $window.localStorage.token="";
+         $window.localStorage.userId="";
+         $state.go('landing'); 
+      };
+      
+}]);

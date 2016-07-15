@@ -1,10 +1,11 @@
 angular.module('starter.controllers')
-    .controller('loginCtrl', ['$scope', 'SSFUsersRest', '$state', '$window',  function($scope, SSFUsersRest, $state, $window) {
+    .controller('loginCtrl', ['$scope', 'SSFUsersRest', '$state', '$window',function($scope, SSFUsersRest, $state, $window) {
 
         $scope.user = {};
 
         $scope.signIn = function(form) {
-            SSFUsersRest.login($scope.user).then(function(response) {
+            
+            SSFUsersRest.display($scope.user).then(function(response) {
                 // handle different responses and decide what happens next
                 if (response.status == 200) {
                     $window.localStorage.token = response.data.id;

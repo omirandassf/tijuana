@@ -1,16 +1,22 @@
-<div class="bar bar-header">
-    <button class="button icon-left ion-home">Home</button>
-    <div class="h1 title">Lobby</div>
-</div>
+
+ 
 
 <div class="bar bar-subheader">
-    <label class="item item-input">
+<label class="item item-input">
 <i class="icon ion-search placeholder-icon"></i>
 <input type="text" placeholder="Search">
 </label>
 </div>
 
 <ion-view>
+    <ion-view view-title="Lobby" hide-back-button="true">
+
+    <ion-nav-buttons side="right">
+    <button class="button" ng-click=logOut()>
+        Log Out
+</button>
+  
+  
 <ion-content>
 <br><br><br>
     <ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="4" space-between="2" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}"  on-ready="onReadySwiper(swiper)">

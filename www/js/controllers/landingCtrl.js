@@ -5,7 +5,6 @@ angular.module('starter.controllers')
         
         deploy.check().then(function(hasUpdate) {
             //App will automatically reload when updated successfully
-            alert('Ionic Deploy: Update available: ' + hasUpdate);
             if (hasUpdate) {
                 //Perform update
                 deploy.update().then(function(res) {
