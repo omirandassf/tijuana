@@ -7,7 +7,7 @@
     </ion-nav-title>
     <ion-nav-buttons side="right">
       <a class="button button-clear button-light" ui-sref="lobby">
-        Skip pls
+        Skip tests
       </a>
     </ion-nav-buttons>
   </ion-nav-bar>
@@ -20,7 +20,13 @@ Log In
     <button type="register" class="button button-block button-balanced" ui-sref="register">
             Register </button><br>
             
-          
+     <button class="button button-primary button-block " ng-click="checkForUpdates()">
+  Check for updates
+</button>
+
+<button class="button button-stable button-block button-pulse" ng-if="hasUpdate" ng-click="doUpdate()">
+  Download update
+</button>     
 
 
   </ion-content>
