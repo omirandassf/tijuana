@@ -1,7 +1,8 @@
 angular.module('starter.controllers')
 
-.controller('doctorCtrl', function($scope) {
-    
-    
-    
-});
+.controller('doctorsCtrl', ['$scope','users', function($scope,users) {
+        
+    $scope.user = users;
+
+        
+    }]);

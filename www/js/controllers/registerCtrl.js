@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
-    .controller('registerCtrl', ['$scope', 'SSFUsersRest', '$state','$window',
-    function($scope, SSFUsersRest, $state,$window) {
+    .controller('registerCtrl', ['$scope', 'doctorsRest', '$state','$window',
+    function($scope, doctorsRest, $state,$window) {
 
         $scope.user = {};
         $scope.signIn = function(form) {
@@ -8,13 +8,13 @@ angular.module('starter.controllers')
                     return alert("Please complete the form before proceeding.");
                 }
 
-                SSFUsersRest.register($scope.user).then(function(response) {
+                doctorsRest.register($scope.user).then(function(response) {
                     // handle different responses and decide what happens next
                     if (response.status == 200) {
                         $window.localStorage.token=response.data.token;
                         $window.localStorage.userId=response.data.id;
                         $scope.user = {};
-                        $state.go("lobby");
+                        $state.go("tabs.lobby");
 
                 }}, function(err) {
                     if (err.status == 422) {
@@ -30,7 +30,21 @@ angular.module('starter.controllers')
 
 
         };
+        
+        $scope.previewFile = function() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
 
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  };
 
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+};
 
     }]);

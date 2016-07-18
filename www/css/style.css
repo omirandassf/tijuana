@@ -4,54 +4,43 @@
   background-color: #101010;
 }
 
-/*.scroll-content {*/
-/*  background-color: #2B2B2B;*/
-/*}*/
-
-/*.item, .item-complex .item-content, .item-radio .item-content {*/
-/*  border-color: #4C4C4C;*/
-/*  background-color: #2B2B2B;*/
-/*  color: #D0D0D0;*/
-/*}*/
-
-
-/*.item.item-divider {*/
-/*  background-color: #404040;*/
-/*}*/
-
-/*.item.item-body {*/
-/*  background-color: #313030;*/
-/*}*/
-
-.item h2,h3,h4{
-  text-align:center;
-  color:blue;
+.login-container {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    height: 100%;
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efad62), color-stop(100%,#f7d47c));*/
+    /*background: -webkit-linear-gradient(top, #ffffff 0%,#000000 100%);*/
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.item-text-center
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
 }
 
-
-.card-background-page ion-card {
-  position: absolute;
-  text-align: center;
+.scroll {
+    height: 100%;
 }
-.card-background-page .card-title {
-  position: absolute;
-  top: 65%;
-  font-size: 2.0em;
-  width: 100%;
-  font-weight: bold;
-  color: #fff;
-}
-.card-background-page .card-subtitle {
-  font-size: 1.5em;
-  position: absolute;
-  bottom: 15%;
-  width: 100%;
-  color: #fff;
-}
-.card-background-page .card-price {
-  font-size: 1.0em;
-  position: absolute;
-  bottom: 5%;
-  width: 100%;
-  color: #fff;
+ 
+#map {
+    width: 100%;
+    height: 100%;
 }

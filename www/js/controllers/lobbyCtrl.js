@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('lobbyCtrl',['$scope','$window','SSFUsersRest','$state', function($scope,$window,SSFUsersRest,$state) {
+.controller('lobbyCtrl',['$scope','$window','doctorsRest','$state', function($scope,$window,doctorsRest,$state) {
     
     $scope.swiper = {};
  
@@ -16,7 +16,7 @@ angular.module('starter.controllers')
     };
     
     $scope.logOut=function(){
-         SSFUsersRest.logOut();
+         doctorsRest.logOut($window.localStorage.token);
          $window.localStorage.token="";
          $window.localStorage.userId="";
          $state.go('landing'); 

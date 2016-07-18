@@ -15,7 +15,7 @@
 </label>
 
             <label class="item item-input" ng-class="{ 'has-errors' : registerForm.location.$invalid && registerForm.$submitted}">
-<input name="location" type="text" placeholder="Location" ng-model="user.location" required>
+<input name="location" type="text" placeholder="Location" ng-model="user.officeLocation" required>
 </label>
 
             <label class="item item-input" ng-class="{ 'has-errors' : registerForm.website.$invalid && registerForm.$submitted}">
@@ -36,22 +36,28 @@
 </textarea>
 </label>
 
+            <button class="button button-block button-energized" type="submit">Submit! </button>
 
 </form>
             <!--    <label class="item item-input" ng-class="{ 'has-errors' : registerForm.password.$invalid && registerForm.$submitted}">-->
             <!--<input name="password" type="password" placeholder="Password" ng-model="user.password" required>-->
             <!--</label>-->
-            <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
-            <img ng-show="imgURI === undefined" ng-src="http://placehold.it/100x100">
-            <button class="button button-block button-calm" ng-click="takePicture()">Take Picture</button>
+            <!--<img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">-->
+            <!--<img ng-show="imgURI === undefined" ng-src="http://placehold.it/100x100">-->
+            <!--<button class="button button-block button-calm" ng-click="takePicture()">Take Picture</button>-->
             
-            <button class="button button-block button-stable" ng-click="choosePhoto()">Choose Picture</button>
+            <!--<button class="button button-block button-stable" ng-click="choosePhoto()">Choose Picture</button>-->
 
 
-            <br>
-            <button class="button button-block button-energized" type="submit">Submit! </button>
+            <!--<br>-->
 
 
+<button class="button button-energized" ng-click="addImage()">
+	  Add image
+  </button><br><br>
+  <ion-scroll>
+	  <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/>
+  </ion-scroll>
 
 
 

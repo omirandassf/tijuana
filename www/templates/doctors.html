@@ -1,45 +1,58 @@
 <ion-view view-title="Doctors">
 
 
-<ion-view view-title="Lobby" hide-back-button="true">
+  <ion-view view-title="Lobby" hide-back-button="true">
 
     <ion-nav-buttons side="right">
-    <button class="button" ng-click=logOut()>
+      <button class="button" ng-click=logOut()>
         Log Out
 </button>
-  </ion-nav-buttons>
-  
-  <ion-nav-buttons side="left">
-    <button class="button" ui-sref="lobby">
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="left">
+      <button class="button" ui-sref="lobby">
         Lobby
 </button>
-  </ion-nav-buttons>
-  
-  
+    </ion-nav-buttons>
+
+
 
 
     <ion-content>
 
 
 
-        <label class="item item-input"><i class="icon ion-search placeholder-icon"></i>
+      <label class="item item-input"><i class="icon ion-search placeholder-icon"></i>
       <input type="text" placeholder="Search">
     </label>
-        <ion-item class="card-doctors">
-            <ion-thumbnail item-left>
-                <img src="img/doctor.png" height="100px" position="relative">
-                <h2>Oscar Miranda</h2>
-                <h3>Office Location</h3>
-                <h4>Website</h4>
-            </ion-thumbnail>
-            
-        </ion-item>
+    
+      <ion-item ng-repeat="name in user" class="item-thumbnail-left item-icon-right">
+          <img src="img/doctor.png">
+          <h2>{{name.firstName}}</h2>
+
+          <h3>{{name.lastName}}</h3>
+          <h3>{{name.officeName}}</h3>
+          <h3>{{name.officeLocation}}</h3>
+          <h4>{{name.website}}</h4>
+          <h4>{{name.description}}</h4>
+                      <i class="icon ion-chevron-right icon-accessory"></i>
 
 
-<button type="submit" class="button button-block button-balanced" ui-sref="registerDoctors">Add Doctor </button>
+          
+      </ion-item>
+      
+      
+      <!--<ion-list>-->
+      <!--  <ion-item ng-repeat="user in users">-->
+      <!--    <span class="item-note">-->
+      <!--        {{user.firstName}}-->
+      <!--      </span>-->
+      <!--  </ion-item>-->
+      <!--</ion-list>-->
+
 
 
 
     </ion-content>
 
-</ion-view>
+  </ion-view>
