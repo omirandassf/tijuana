@@ -1,9 +1,10 @@
 angular.module("RESTServices", [])
     .service('doctorsRest', ['$http','$window', function($http,$window) {
+        
         var doctorsRest = this;
         var apiUrl = "https://myapp-oscar521.c9users.io/api/doctorUsers";
         
-        doctorsRest.register = function(newUserData) {
+        doctorsRest.postNewUser = function(newUserData) {
             return $http({
                 url: apiUrl,
                 method: 'POST',
@@ -11,7 +12,7 @@ angular.module("RESTServices", [])
             });
             
         };
-        doctorsRest.logMeRightIn=function(data){
+        doctorsRest.logUser=function(data){
             return $http({
                 url:apiUrl+"/login",
                 method: 'POST',
@@ -34,6 +35,15 @@ angular.module("RESTServices", [])
             return $http({
                 url:apiUrl,
                 method:'GET'
+            });
+        };
+        doctorsRest.profile=function(token, userId){
+            return $http({
+                url:apiUrl + "?filter[where][userID]=" + userId,
+                method:'GET',
+                headers: {
+                    'Authorization': token
+                }
             });
         };
 

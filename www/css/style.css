@@ -1,8 +1,8 @@
 /* Empty. Add your own CSS if you like */
 
-.card, .list-inset {
-  background-color: #101010;
-}
+/*.card, .list-inset {*/
+/*  background-color: #101010;*/
+/*}*/
 
 .login-container {
     display: -webkit-flex;

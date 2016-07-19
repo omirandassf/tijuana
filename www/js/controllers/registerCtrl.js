@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
-    .controller('registerCtrl', ['$scope', 'doctorsRest', '$state','$window',
-    function($scope, doctorsRest, $state,$window) {
+    .controller('registerCtrl', ['$scope', '$state','$window','doctorsRest',
+    function($scope, $state,$window,doctorsRest) {
 
         $scope.user = {};
         $scope.signIn = function(form) {
@@ -8,7 +8,7 @@ angular.module('starter.controllers')
                     return alert("Please complete the form before proceeding.");
                 }
 
-                doctorsRest.register($scope.user).then(function(response) {
+                doctorsRest.postNewUser($scope.user).then(function(response) {
                     // handle different responses and decide what happens next
                     if (response.status == 200) {
                         $window.localStorage.token=response.data.token;

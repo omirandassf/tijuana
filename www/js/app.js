@@ -1,9 +1,11 @@
 // Ionic Starter App
+var fb = new Firebase("https://pictures-aeeca.firebaseio.com/");
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers', 'ksSwiper', 'ngCordova', 'ion-google-place', 'RESTServices','DoctorsAnswers'])
+angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers', 'ksSwiper', 'ngCordova', 'firebase', 'ion-google-place', 'RESTServices', 'DoctorsAnswers'])
+
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -23,91 +25,135 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
     });
   })
   .config(function($stateProvider, $urlRouterProvider) {
-      $urlRouterProvider.otherwise('/');
-      $stateProvider
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+    
+      .state('landing', {
+        url: '/',
+        templateUrl: 'templates/landing.html',
+        controller: 'landingCtrl'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'templates/register.html',
+        controller: 'registerCtrl',
+        cache: false
+      })
+      .state('registerDoctors', {
+        url: '/registerDoctors',
+        templateUrl: 'templates/registerDoctors.html',
+        // controller: 'registerDoctorsCtrl'
 
-        .state('landing', {
-          url: '/',
-          templateUrl: 'templates/landing.html',
-          controller: 'landingCtrl'
-        })
-        .state('login', {
-          url: '/login',
-          templateUrl: 'templates/login.html',
-          controller: 'loginCtrl'
-        })
-        .state('register', {
-          url: '/register',
-          templateUrl: 'templates/register.html',
-          controller: 'registerCtrl',
-          cache: false
-        })
-        .state('registerDoctors', {
-          url: '/registerDoctors',
-          templateUrl: 'templates/registerDoctors.html',
-          controller: 'registerDoctorsCtrl'
+      })
+      .state('registerEvents', {
+        url: '/registerEvents',
+        templateUrl: 'templates/registerEvents.html',
+        controller:'registerEventsCtrl'
+      })
+      .state('tabs', {
+        abstract: true,
+        url: '/tabs',
+        templateUrl: 'templates/tabs.html'
+      })
+      .state('tabs.events', {
+        url: '/events',
+        views: {
+          'events': {
+            templateUrl: 'templates/events.html',
+            controller: 'eventsCtrl',
+            resolve: {
+              events: ['postEventsRest',
+                function(postEventsRest) {
+                  return postEventsRest.showEvents()
+                    .then(function(res) {
+                      return res.data;
 
-        })
-        .state('registerEvents', {
-          url: '/registerEvents',
-          templateUrl: 'templates/registerEvents.html',
-          // controller:'registerEventsCtrl'
-        })
-        .state('tabs', {
-          abstract: true,
-          url: '/tabs',
-          templateUrl: 'templates/tabs.html',
-          // controller:'registerEventsCtrl'
-        })
-        .state('tabs.events', {
-          url: '/events',
-          views: {
-            'events': {
-              templateUrl: 'templates/events.html',
-              controller: 'eventsCtrl'
-            }
+                    }, function(err) {
+
+                      if (err.status == 404) {
+                        alert("Server not found");
+                      }
+                      else if (err.status == 500) {
+                        alert("The world has ended, or the server just isn’t online");
+                      }
+
+                    });
+
+                }]}
+            
           }
-        })
-        .state('tabs.doctors', {
-            url: '/doctors',
-            views: {
-              'doctors': {
-                templateUrl: 'templates/doctors.html',
-                controller: 'doctorsCtrl',
-                resolve: {
-                  users: ['DoctorsAnswersService',
-                    function(DoctorsAnswersService) {
-                      return DoctorsAnswersService.getDoctors()
-                        .then(function(res) {
-                          return res.data;
+        }
+      })
+      .state('tabs.doctors', {
+        url: '/doctors',
+        views: {
+          'doctors': {
+            templateUrl: 'templates/doctors.html',
+            controller: 'doctorsCtrl',
+            resolve: {
+              users: ['DoctorsAnswersService',
+                function(DoctorsAnswersService) {
+                  return DoctorsAnswersService.getDoctors()
+                    .then(function(res) {
+                      return res.data;
 
-                        }, function(err) {
+                    }, function(err) {
 
-                          if (err.status == 404) {
-                            alert("Server not found");
-                          }
-                          else if (err.status == 500) {
-                            alert("The world has ended, or the server just isn’t online");
-                          }
-                          alert("You have some problem with the Internet");
+                      if (err.status == 404) {
+                        alert("Server not found");
+                      }
+                      else if (err.status == 500) {
+                        alert("The world has ended, or the server just isn’t online");
+                      }
 
-                        }); 
-                      
-                    }]
-                  
-                }
-                    }
-                  }
-                })
-              .state('tabs.lobby', {
-                url: '/lobby',
-                views: {
-                  'lobby': {
-                    templateUrl: 'templates/lobby.html',
-                    controller: 'lobbyCtrl'
-                  }
+                    });
 
-                }
-              });
+                }]}
+          }
+        }
+      })
+      .state('tabs.lobby', {
+        url: '/lobby',
+        views: {
+          'lobby': {
+            templateUrl: 'templates/lobby.html',
+            controller: 'lobbyCtrl'
+          }
 
-            });
+        }
+      })
+      .state('tabs.profile', {
+        url: '/profile',
+        views: {
+          'profile': {
+            templateUrl: 'templates/profile.html',
+            controller: 'profileDoctorCtrl',
+            resolve: {
+              profile: ['DoctorsAnswersService',
+                function(DoctorsAnswersService) {
+                  return DoctorsAnswersService.getProfile()
+                    .then(function(res) {
+                      return res.data;
+
+                    }, function(err) {
+
+                      if (err.status == 404) {
+                        alert("Server not found");
+                      }
+                      else if (err.status == 500) {
+                        alert("The world has ended, or the server just isn’t online");
+                      }
+
+                    });
+
+                }]}
+          }
+
+        }
+      });
+ }); 

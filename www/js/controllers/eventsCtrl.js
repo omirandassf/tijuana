@@ -1,28 +1,72 @@
 angular.module('starter.controllers')
 
-.controller('eventsCtrl', ['$scope', function($scope) {
+.controller('eventsCtrl', ['$scope','events', function($scope,events) {
+
+
+                        $scope.upload = function() {
+
+                                var options = {
+                                        quality: 75,
+                                        destinationType: Camera.DestinationType.DATA_URL,
+                                        sourceType: Camera.PictureSourceType.CAMERA,
+                                        allowEdit: true,
+                                        encodingType: Camera.EncodingType.JPEG,
+                                        targetWidth: 300,
+                                        targetHeight: 300,
+                                        popoverOptions: CameraPopoverOptions,
+                                        saveToPhotoAlbum: false
+                                };
+
+                                // $cordovaCamera.getPicture(options).then(function(imageData) {
+                                //         syncArray.$add({
+                                //                 image: imageData
+                                //         }).then(function() {
+                                //                 alert("Image has been uploaded");
+                                //         });
+                                // }, function(error) {
+                                //         alert(error);
+                                // });
+
+                        };
+                                                
+                        $scope.event=events;
+
         
-        google.maps.event.addDomListener(window, 'load', function() {
-        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
- 
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
- 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
- 
-        navigator.geolocation.getCurrentPosition(function(pos) {
-            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            var myLocation = new google.maps.Marker({
-                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                map: map,
-                title: "My Location"
-            });
-        });
- 
-        $scope.map = map;
-    });
-        
-    }]);
+}]);
+
+
+
+ //     var fbAuth = fb.getAuth();
+                        // if(fbAuth) {
+                        //     var userReference = fb.child("users/" + fbAuth.uid);
+                        //     var syncArray = $firebaseArray(userReference.child("images"));
+                        //     $scope.images = syncArray;
+                        // } else {
+                        //     // $state.go("lobby");
+                        // }
+                        // $scope.profile = function(token,userId){
+                        //     DoctorsAnswersService.getProfile(token,userId)
+                        //     .then(function(res) {
+                        //         return res.data;
+
+                        //     }, function(err) {
+
+                        //         if (err.status == 404) {
+                        //             alert("Server not found");
+                        //         }
+                        //         else if (err.status == 500) {
+                        //             alert("The world has ended, or the server just isn’t online");
+                        //         }
+
+                        //     }
+                        //     )};
+
+
+                // // var fbAuth = fb.getAuth();
+                // // if(fbAuth) {
+                // //     var userReference = fb.child("users/" + fbAuth.uid);
+                // //     var syncArray = $firebaseArray(userReference.child("images"));
+                // //     $scope.images = syncArray;
+                // // } else {
+                // //     $state.go("firebase");
+                // // }

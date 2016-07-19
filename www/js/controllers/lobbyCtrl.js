@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('lobbyCtrl',['$scope','$window','doctorsRest','$state', function($scope,$window,doctorsRest,$state) {
+.controller('lobbyCtrl',['$scope','$window','$state', function($scope,$window,$state) {
     
     $scope.swiper = {};
  

@@ -1,11 +1,11 @@
 angular.module('starter.controllers')
-    .controller('loginCtrl', ['$scope', 'doctorsRest', '$state', '$window',function($scope, doctorsRest, $state, $window) {
+    .controller('loginCtrl', ['$scope', '$state', '$window','doctorsRest',function($scope, $state, $window,doctorsRest) {
 
         $scope.user = {};
 
         $scope.signIn = function(form) {
             
-            doctorsRest.logMeRightIn($scope.user).then(function(response) {
+            doctorsRest.logUser($scope.user).then(function(response) {
                 // handle different responses and decide what happens next
                 if (response.status == 200) {
                     $window.localStorage.token = response.data.id;
@@ -23,9 +23,6 @@ angular.module('starter.controllers')
                 else {
                     alert("Email doesnt exist!");
                 }
-
-
-
 
             });
 
