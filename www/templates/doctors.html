@@ -10,12 +10,11 @@
     <ion-content>
 
 
-
       <label class="item item-input"><i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="Search">
+      <input type="text" placeholder="Search" ng-model="searchbox.$">
     </label>
-    
-      <ion-item ng-repeat="name in user" class="item-thumbnail-left item-icon-right">
+
+      <ion-item ng-repeat="name in user|filter:searchbox" class="item-thumbnail-left">
           <img src="img/doctor.png">
           <h2>{{name.firstName}}</h2>
 
@@ -24,24 +23,10 @@
           <h3>{{name.officeLocation}}</h3>
           <h4>{{name.website}}</h4>
           <h4>{{name.description}}</h4>
-                      <i class="icon ion-chevron-right icon-accessory"></i>
 
 
           
       </ion-item>
-      
-      
-      <!--<ion-list>-->
-      <!--  <ion-item ng-repeat="user in users">-->
-      <!--    <span class="item-note">-->
-      <!--        {{user.firstName}}-->
-      <!--      </span>-->
-      <!--  </ion-item>-->
-      <!--</ion-list>-->
-
-
-
-
     </ion-content>
 
   </ion-view>

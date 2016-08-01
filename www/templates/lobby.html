@@ -1,39 +1,24 @@
 <ion-view view-title="Lobby" hide-back-button="true">
     <ion-nav-buttons side="right">
-        <button class="button" ng-click=logOut()>
+        <button class="button" ng-click="logOut()" ng-show="shouldShowButton">
         Log Out
 </button>
-
-
     </ion-nav-buttons>
-    
-    
-<!--    <div class="bar bar-subheader">-->
-<!--        <label class="item item-input">-->
-<!--<i class="icon ion-search placeholder-icon"></i>-->
-<!--<input type="text" placeholder="Search">-->
-<!--</label>-->
-    </div>
-    
-    
-    <ion-content>
 
+<ion-nav-buttons side="left">
+    <a class="button button-clear button-stable" ui-sref="landing">
+        Menu
+      </a>
+  </ion-nav-buttons>
+
+
+ <ion-content class="button-clear" style="width: 100%; min-height: 120%; height: 120%;">
         <br><br>
-        <ks-swiper-container class="padding" initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="4" space-between="2" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}"
-            on-ready="onReadySwiper(swiper)">
-            <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-                <img ng-src="img/puppy-{{s}}.jpg" width="100%">
+        <ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="4" space-between="2" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}"  on-ready="onReadySwiper(swiper)">
+            <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7]" style="width:100%; min-height: 90%; height: 90%;">
+                <img ng-src="img/doctor.{{s}}.png" style="width: 100%; min-height: 70vh; height: 70vh;">
             </ks-swiper-slide>
         </ks-swiper-container>
-        <br>
-
-        <ion-item class="item-text-wrap">
-            Tijuana is the largest city in Baja California and on the Baja California Peninsula and center of the Tijuana metropolitan area, part of the international San Diego–Tijuana metropolitan area. As an industrial and financial center of Mexico,Tijuana exerts
-            a strong influence on economics, education, culture, art, and politics. As the city has become a leading center in the country, so has the surrounding metropolitan area, a major industrial and paramount metropolis in northwestern Mexico. Currently
-            one of the fastest growing metropolitan areas in Mexico, Tijuana maintains global city status. As of 2015, the city of Tijuana had a population of 1,696,923
-        </ion-item>
-
-
     </ion-content>
 
     

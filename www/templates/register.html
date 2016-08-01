@@ -1,8 +1,7 @@
 <ion-view view-title="Register" >
-    <ion-content class="padding" class="button-clear">
-        
-                        <div class="form-group" ng-show="ModelData.Registration">
+     <ion-content class="padding" class="button-clear">
 
+    <div class="form-group" ng-show="ModelData.Registration">
         <div class="row row-center" >
         <div class="col text-center" >
 
@@ -13,9 +12,9 @@
     </div>
     
       </div>
-        <input type="file" name="pic" accept="image/*" multiple></input>
+        <!--<input type="file" name="pic" accept="image/*" multiple></input>-->
 
-      <button class="button button-block button-energized" ng-click="addImage()">
+      <button class="button button-block button-energized" ng-click="upload()">
 	  Add image
   </button>
 
@@ -74,7 +73,7 @@
           </div>
 
           </div>
-
+          <!--<div ng-model="user.image"></div>-->
 
 
 
@@ -85,5 +84,6 @@
         </form>
       </div>
     </div>
+  
   </ion-content>
 </ion-view>

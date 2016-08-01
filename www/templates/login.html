@@ -1,5 +1,7 @@
 <ion-view view-title="Log In">
-    <ion-content class="padding">
+    
+    <ion-content>
+    <section class="login-container">
         <form name="register" ng-submit="signIn(register)" novalidate><br><br>
 
             <label class="item item-input" ng-class="{ 'has-errors' : registerForm.email.$invalid && registerForm.$submitted}">
@@ -11,8 +13,11 @@
             </label><br>
 
 
-            <button type="submit" class="button button-block button-balanced">
+            <button type="submit" class="button button-block button-calm">
             Log In </button><br>
+            <!--<p class="text-center" ng-click="modal.show()">-->
+            <!--  <a>Forgot password - Click Me</a>-->
+            <!--</p>-->
 
 
 
@@ -22,5 +27,6 @@
           
 
         </form>
+        </section>
     </ion-content>
 </ion-view>

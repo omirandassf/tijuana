@@ -5,7 +5,7 @@ angular.module('starter.controllers')
     $scope.user = users;
     
     $scope.logOut=function(){
-         doctorsRest.logOut($window.localStorage.token);
+         doctorsRest.logOut();
          $window.localStorage.token="";
          $window.localStorage.userId="";
          $state.go('landing'); 

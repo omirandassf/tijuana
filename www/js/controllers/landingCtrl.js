@@ -1,5 +1,14 @@
 angular.module('starter.controllers')
-    .controller('landingCtrl', ['$scope', function($scope) {
+    .controller('landingCtrl', ['$scope', '$state','ButtonService',
+    function($scope,$state,ButtonService) {
+       
+       $scope.jumpLogIn=function(){
+         ButtonService.setshouldShowMyButton(false);
+         $state.go('tabs.lobby');
+       }; 
+        
+        
+        
         var deploy = new Ionic.Deploy();
         deploy.setChannel("dev");
         

@@ -8,8 +8,8 @@ angular.module('DoctorsAnswers', [])
             
         };
         
-        service.getProfile = function() {
-            return doctorsRest.profile();
+        service.getProfile = function(userId) {
+            return doctorsRest.profile(userId);
             
         };
         

@@ -1,0 +1,45 @@
+<ion-modal-view class="pane">
+        <ion-header-bar class="bar-dark nav-title-slide-ios7">
+          <h1 class="title">Change Info</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding" class="pane">
+          <form name="changeContacts" ng-submit="changeContact(changeContacts)">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First Name</span>
+              <input ng-model="newUser.firstName" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Last Name</span>
+              <input ng-model="newUser.lastName" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input ng-model="newUser.email" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Password</span>
+              <input ng-model="newUser.password" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Website</span>
+              <input ng-model="newUser.website" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Office Name</span>
+              <input ng-model="newUser.officeName" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Office Location</span>
+              <input ng-model="newUser.officeLocation" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Phone Number</span>
+              <input ng-model="newUser.phoneNumber" type="number">
+            </label>
+            <button class="button button-full button-positive" type="submit" ng-click="changeContact(newUser)">Change</button>
+          </div>
+          </form>
+        </ion-content>
+      </ion-modal-view>

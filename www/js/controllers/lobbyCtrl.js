@@ -1,6 +1,10 @@
 angular.module('starter.controllers')
 
-.controller('lobbyCtrl',['$scope','$window','$state', function($scope,$window,$state) {
+.controller('lobbyCtrl',['$scope','$window','$state','doctorsRest','ButtonService',
+function($scope,$window,$state,doctorsRest,ButtonService) {
+    
+    
+    $scope.shouldShowButton=ButtonService.getshouldShowMyButton();
     
     $scope.swiper = {};
  
@@ -15,8 +19,10 @@ angular.module('starter.controllers')
         });     
     };
     
+
     $scope.logOut=function(){
-         doctorsRest.logOut($window.localStorage.token);
+         $scope.shouldShowButton=ButtonService.setshouldShowMyButton(false);
+         doctorsRest.logOut();
          $window.localStorage.token="";
          $window.localStorage.userId="";
          $state.go('landing'); 

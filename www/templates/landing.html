@@ -1,39 +1,39 @@
 <ion-view view-title="Landing Page" hide-back-button="true">
-  <ion-nav-bar>
-    <ion-nav-back-button>
-    </ion-nav-back-button>
-    <ion-nav-title>
-      <span>Landing</span>
-    </ion-nav-title>
-    <ion-nav-buttons side="right">
-      <a class="button button-clear button-stable" ui-sref="tabs.lobby">
-        Skip to Lob
+  <!--<ion-view view-title="Landing Page">-->
+  <!--  <ion-nav-bar>-->
+  <!--    <ion-nav-back-button>-->
+  <!--    </ion-nav-back-button>-->
+  <!--    <ion-nav-title>-->
+  <!--      <span>Landing</span>-->
+  <!--    </ion-nav-title>-->
+  <ion-nav-buttons side="right">
+    <a class="button button-clear button-stable" ng-click="jumpLogIn()">
+        Skip to Lobby
       </a>
-    </ion-nav-buttons>
+  </ion-nav-buttons>
+  
   </ion-nav-bar>
-  <ion-content>
+  <ion-content >
     <section class="login-container">
-      
-      <div class = "col header text-center">
-               <img src="./img/download.png" class = "logo" />
-            </div>
-      
-      
-      <div class="col button-row text-center">
-        <button class="button button-block button-calm" ui-sref="login">
-Log In
-</button>
-        <button type="register" class="button button-block button-calm" ui-sref="register">
-            Register </button>
+
+      <div class="col header text-center">
+        <img src="./img/tijuana.png" class="logo" />
       </div>
-      
-      <div class="button-row text-center" style="position: absolute; bottom: 0px; width: 100%">
+
+
+      <div class="col button-row text-center">
+        <button class="button button-block button-calm" ui-sref="login">Log In</button>
+      </div>
+
+      <div class="col button-row text-center">
+        <button type="register" class="button button-block button-calm" ui-sref="register">Register</button>
+      </div>
+      <div class="col button-row text-center">
         <button class="button button-primary button-block " ng-click="checkForUpdates()">
   Check for updates
 </button>
       </div>
       <div class="col button-row text-center">
-
         <button class="button button-stable button-block button-pulse" ng-if="hasUpdate" ng-click="doUpdate()">
   Download update
 </button>

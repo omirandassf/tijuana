@@ -12,6 +12,7 @@ angular.module('starter.controllers')
                     // handle different responses and decide what happens next
                     if (response.status == 200) {
                         alert("Event has been posted Successfully." + "You can check it out now!");
+                        postEventsRest.showEvents();
                         $scope.user = {};
                         $state.go("tabs.events");
 

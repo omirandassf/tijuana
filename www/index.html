@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
   <title>My App</title>
 
 
@@ -18,10 +19,13 @@
   <!-- google places api -->
   <!--<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>-->
   <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5CktKWA1CqVrbMNfXPYYjw_drM_QsSU&amp;sensor=false&amp;libraries=places" <script=""></script>-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5CktKWA1CqVrbMNfXPYYjw_drM_QsSU"></script>
-
-  <!-- include spec files here... -->
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5CktKWA1CqVrbMNfXPYYjw_drM_QsSU"></script>-->
+  <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&sensor=false"></script>-->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <!-- include spec files here FOR GOOGLE MAPS -->
   <!--<script src="spec/geocode-options.js"></script>  -->
+  <!--<script src='angular-google-maps.min.js'></script>-->
+  <!--<script src='lodash.min.js'></script>-->
 
 
   <!-- ionic/angularjs js -->
@@ -50,9 +54,9 @@
 
 
   <!-- cordova script (this will be a 404 during development) -->
-  <script src="js/firebase.js"></script>
-  <script src="js/angularfire.min.js"></script>
-  <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <script src="js/angular.min.js"></script>
+ 
+  <!--<script src="lib/ngCordova/dist/ng-cordova.js"></script>-->
   <script src="js/ng-cordova.min.js"></script>
   <script src="cordova.js"></script>
 
@@ -67,14 +71,25 @@
   <script src="js/controllers/doctorsCtrl.js"></script>
   <script src="js/controllers/eventsCtrl.js"></script>
   <script src="js/controllers/registerCtrl.js"></script>
-  <script src="js/controllers/registerDoctorsCtrl.js"></script>
   <script src="js/controllers/registerEventsCtrl.js"></script>
   <script src="js/controllers/profileDoctor.js"></script>
+  <script src="js/controllers/locationCtrl.js"></script>
+
 
 
   <!--Services-->
-  <script src="js/services/ion-google-place.js"></script>
   <script src="js/services/resultsService.js"></script>
+  <script src="js/services/showButtonService.js"></script>
+  <script src="js/services/modalService.js"></script>
+  <script src="js/services/locationdtv.js"></script>
+  
+  <!--Directives-->
+  <script src="js/services/iongoogleplace.js"></script>
+
+
+
+
+
 
 
   <!--Rest Service-->
@@ -91,18 +106,18 @@
 
 <body ng-app="starter">
 
-
-  <ion-view class="background-color">
+  <ion-view class="pending">
     <ion-content class="padding">
     </ion-content>
   </ion-view>
   <ion-nav-bar align-title="center" class="bar-dark nav-title-slide-ios7">
     <ion-nav-back-button class="button-clear">
-          <i class="ion-arrow-left-c"></i> Back
+      <i class="ion-arrow-left-c"></i> Back
 
     </ion-nav-back-button>
   </ion-nav-bar>
-  <ion-nav-view class="background-color"></ion-nav-view>
+  <ion-nav-view>
+  </ion-nav-view>
 
 </body>
 

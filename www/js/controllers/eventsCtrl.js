@@ -1,72 +1,49 @@
 angular.module('starter.controllers')
 
-.controller('eventsCtrl', ['$scope','events', function($scope,events) {
+.controller('eventsCtrl', ['$scope', 'events', '$cordovaCamera', '$state','ButtonService',
+function($scope, events, $cordovaCamera, $state,ButtonService) {
 
 
-                        $scope.upload = function() {
+        // $scope.shouldShowButton=ButtonService.getshouldShowMyBar();
 
-                                var options = {
-                                        quality: 75,
-                                        destinationType: Camera.DestinationType.DATA_URL,
-                                        sourceType: Camera.PictureSourceType.CAMERA,
-                                        allowEdit: true,
-                                        encodingType: Camera.EncodingType.JPEG,
-                                        targetWidth: 300,
-                                        targetHeight: 300,
-                                        popoverOptions: CameraPopoverOptions,
-                                        saveToPhotoAlbum: false
-                                };
 
-                                // $cordovaCamera.getPicture(options).then(function(imageData) {
-                                //         syncArray.$add({
-                                //                 image: imageData
-                                //         }).then(function() {
-                                //                 alert("Image has been uploaded");
-                                //         });
-                                // }, function(error) {
-                                //         alert(error);
-                                // });
 
-                        };
-                                                
-                        $scope.event=events;
+        $scope.upload = function() {
 
+
+                var options = {
+                        quality: 75,
+                        destinationType: Camera.DestinationType.DATA_URL,
+                        sourceType: Camera.PictureSourceType.CAMERA,
+                        allowEdit: false,
+                        encodingType: Camera.EncodingType.JPEG,
+                        popoverOptions: CameraPopoverOptions,
+                        targetWidth: 500,
+                        targetHeight: 500,
+                        saveToPhotoAlbum: false
+                };
+
+                $cordovaCamera.getPicture(options).then(function(imageData) {
+                        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+                }, function(err) {
+                        // An error occured. Show a message to the user
+                });
+
+        };
+
+
+
+        $scope.event = events;
         
+//         $scope.eventsReapeated=[];
+
+//         postEventsRest.showEvents().then(function(res) {
+//                         event = res.data;
+//                         $scope.eventsRepeated=event;
+//                 }
+//                 $scope.loadMore = function() {$scope.eventsRepeated.then(function(items){
+// 		$scope.items = $scope.items.concat(items);
+// 	});
+// };
+
 }]);
-
-
-
- //     var fbAuth = fb.getAuth();
-                        // if(fbAuth) {
-                        //     var userReference = fb.child("users/" + fbAuth.uid);
-                        //     var syncArray = $firebaseArray(userReference.child("images"));
-                        //     $scope.images = syncArray;
-                        // } else {
-                        //     // $state.go("lobby");
-                        // }
-                        // $scope.profile = function(token,userId){
-                        //     DoctorsAnswersService.getProfile(token,userId)
-                        //     .then(function(res) {
-                        //         return res.data;
-
-                        //     }, function(err) {
-
-                        //         if (err.status == 404) {
-                        //             alert("Server not found");
-                        //         }
-                        //         else if (err.status == 500) {
-                        //             alert("The world has ended, or the server just isn’t online");
-                        //         }
-
-                        //     }
-                        //     )};
-
-
-                // // var fbAuth = fb.getAuth();
-                // // if(fbAuth) {
-                // //     var userReference = fb.child("users/" + fbAuth.uid);
-                // //     var syncArray = $firebaseArray(userReference.child("images"));
-                // //     $scope.images = syncArray;
-                // // } else {
-                // //     $state.go("firebase");
-                // // }

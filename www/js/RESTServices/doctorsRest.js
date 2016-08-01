@@ -34,17 +34,31 @@ angular.module("RESTServices", [])
         doctorsRest.display=function(){
             return $http({
                 url:apiUrl,
-                method:'GET'
-            });
-        };
-        doctorsRest.profile=function(token, userId){
-            return $http({
-                url:apiUrl + "?filter[where][userID]=" + userId,
                 method:'GET',
-                headers: {
-                    'Authorization': token
+                headers:{
+                    'Authorization':$window.localStorage.token
                 }
             });
+        };
+        doctorsRest.profile=function(userId){
+            return $http({
+                url:apiUrl +"/"+ userId,
+                method:'GET',
+                headers: {
+                    'Authorization': $window.localStorage.token
+                }
+            });
+        };
+        
+        doctorsRest.changeProfile=function(data){
+         return $http({
+                url:apiUrl +"/"+ $window.localStorage.userId,
+                method:'PUT',
+                data:data,
+                headers: {
+                    'Authorization': $window.localStorage.token
+                }   
+        });
         };
 
     }]);

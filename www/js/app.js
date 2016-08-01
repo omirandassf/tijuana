@@ -1,13 +1,11 @@
 // Ionic Starter App
-var fb = new Firebase("https://pictures-aeeca.firebaseio.com/");
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers', 'ksSwiper', 'ngCordova', 'firebase', 'ion-google-place', 'RESTServices', 'DoctorsAnswers'])
+var app = angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers', 'ksSwiper', 'ngCordova', 'RESTServices', 'DoctorsAnswers','ShowButon','modalService','ion-google-place']);
 
-
-.run(function($ionicPlatform) {
+app.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -24,31 +22,29 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
       }
     });
   })
-  .config(function($stateProvider, $urlRouterProvider) {
+  app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
     
       .state('landing', {
         url: '/',
         templateUrl: 'templates/landing.html',
-        controller: 'landingCtrl'
+        controller: 'landingCtrl',
+        cache: false
+
       })
       .state('login', {
         url: '/login',
         templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
+        controller: 'loginCtrl',
+        cache: false
+
       })
       .state('register', {
         url: '/register',
         templateUrl: 'templates/register.html',
         controller: 'registerCtrl',
         cache: false
-      })
-      .state('registerDoctors', {
-        url: '/registerDoctors',
-        templateUrl: 'templates/registerDoctors.html',
-        // controller: 'registerDoctorsCtrl'
-
       })
       .state('registerEvents', {
         url: '/registerEvents',
@@ -60,15 +56,21 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
         url: '/tabs',
         templateUrl: 'templates/tabs.html'
       })
+      .state('locations', {
+        url: '/locations',
+        templateUrl: 'templates/locations.html',
+        controller:'locationCtrl'
+      })
       .state('tabs.events', {
         url: '/events',
+        cache:false,
         views: {
           'events': {
             templateUrl: 'templates/events.html',
             controller: 'eventsCtrl',
             resolve: {
-              events: ['postEventsRest',
-                function(postEventsRest) {
+              events: ['postEventsRest','$state',
+                function(postEventsRest,$state) {
                   return postEventsRest.showEvents()
                     .then(function(res) {
                       return res.data;
@@ -77,9 +79,12 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
 
                       if (err.status == 404) {
                         alert("Server not found");
+                        $state.go('lobby');
                       }
                       else if (err.status == 500) {
                         alert("The world has ended, or the server just isn’t online");
+                        $state.go('lobby');
+
                       }
 
                     });
@@ -91,14 +96,15 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
       })
       .state('tabs.doctors', {
         url: '/doctors',
+        cache:false,
         views: {
           'doctors': {
             templateUrl: 'templates/doctors.html',
             controller: 'doctorsCtrl',
             resolve: {
-              users: ['DoctorsAnswersService',
-                function(DoctorsAnswersService) {
-                  return DoctorsAnswersService.getDoctors()
+              users: ['DoctorsAnswersService','$window',
+                function(DoctorsAnswersService,$window) {
+                  return DoctorsAnswersService.getDoctors($window.localStorage.token, $window.localStorage.userId)
                     .then(function(res) {
                       return res.data;
 
@@ -119,6 +125,7 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
       })
       .state('tabs.lobby', {
         url: '/lobby',
+        cache:false,
         views: {
           'lobby': {
             templateUrl: 'templates/lobby.html',
@@ -134,19 +141,20 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
             templateUrl: 'templates/profile.html',
             controller: 'profileDoctorCtrl',
             resolve: {
-              profile: ['DoctorsAnswersService',
-                function(DoctorsAnswersService) {
-                  return DoctorsAnswersService.getProfile()
+              profile: ['DoctorsAnswersService','$window','$state',
+                function(DoctorsAnswersService,$window,$state) {
+                  return DoctorsAnswersService.getProfile($window.localStorage.userId)
                     .then(function(res) {
                       return res.data;
 
                     }, function(err) {
-
-                      if (err.status == 404) {
-                        alert("Server not found");
-                      }
-                      else if (err.status == 500) {
-                        alert("The world has ended, or the server just isn’t online");
+                      if (err.status == 500) {
+                        alert("You are not Logged In, Please Log In!");
+                        $state.go('tabs.lobby');
+                      } else{
+                        alert("You are not Logged In, Please Log In!");
+                        $state.go('tabs.lobby');
+                        
                       }
 
                     });

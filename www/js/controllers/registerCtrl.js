@@ -1,16 +1,17 @@
 angular.module('starter.controllers')
-    .controller('registerCtrl', ['$scope', '$state','$window','doctorsRest',
-    function($scope, $state,$window,doctorsRest) {
-
+    .controller('registerCtrl', ['$scope', '$state','$window','doctorsRest','$cordovaCamera','ButtonService',
+    function($scope, $state,$window,doctorsRest,$cordovaCamera,ButtonService) {
+        
+        // $scope.image=imgURI;
         $scope.user = {};
         $scope.signIn = function(form) {
                 if (form.$invalid) {
                     return alert("Please complete the form before proceeding.");
                 }
-
                 doctorsRest.postNewUser($scope.user).then(function(response) {
                     // handle different responses and decide what happens next
                     if (response.status == 200) {
+                        ButtonService.setshouldShowMyButton(true);
                         $window.localStorage.token=response.data.token;
                         $window.localStorage.userId=response.data.id;
                         $scope.user = {};
@@ -31,20 +32,28 @@ angular.module('starter.controllers')
 
         };
         
-        $scope.previewFile = function() {
-  var preview = document.querySelector('img');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
+        $scope.upload = function() {
 
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  };
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
-};
+                        var options = {
+                                quality: 75,
+                                destinationType: Camera.DestinationType.DATA_URL,
+                                sourceType: Camera.PictureSourceType.CAMERA,
+                                allowEdit: true,
+                                encodingType: Camera.EncodingType.JPEG,
+                                targetWidth: 300,
+                                targetHeight: 300,
+                                popoverOptions: CameraPopoverOptions,
+                                saveToPhotoAlbum: false
+                        };
+
+                        $cordovaCamera.getPicture(options).then(function(imageData) {
+                                $scope.imgURI = "data:image/jpeg;base64," + imageData;
+                        }, function(err) {
+                                // An error occured. Show a message to the user
+                        });
+        };
+        
+        
 
     }]);
