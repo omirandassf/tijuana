@@ -13,7 +13,7 @@ angular.module('ion-google-place',[])
           console.log(status);
           deferred.resolve(result);
         }else{
-          deferred.reject(status)
+          deferred.reject(status);
         }
       });
 

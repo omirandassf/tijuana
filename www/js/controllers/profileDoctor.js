@@ -1,8 +1,13 @@
 angular.module('starter.controllers')
 
-.controller('profileDoctorCtrl', ['$scope', 'profile', '$cordovaCamera','doctorsRest','$ionicModal','$window',
-    function($scope, profile, $cordovaCamera,doctorsRest,$ionicModal,$window) {
+.controller('profileDoctorCtrl', ['$scope', 'profile', '$cordovaCamera','doctorsRest','$ionicModal','$window','ButtonService',
+    function($scope, profile, $cordovaCamera,doctorsRest,$ionicModal,$window,ButtonService) {
 
+            $scope.shouldShowLogInButton=ButtonService.getshouldShowLogInButton()
+            
+            $scope.shouldShowButton=ButtonService.getshouldShowEditButton();
+    
+            
           $ionicModal.fromTemplateUrl('templates/my-modal.html', {
                 scope: $scope,
                 animation: 'slide-in-up'

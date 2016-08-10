@@ -4,6 +4,10 @@ angular.module('starter.controllers')
        
        $scope.jumpLogIn=function(){
          ButtonService.setshouldShowMyButton(false);
+        ButtonService.setshouldShowEditButton(false);
+        ButtonService.setshouldShowLogInButton(true);
+
+
          $state.go('tabs.lobby');
        }; 
         

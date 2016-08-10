@@ -13,8 +13,8 @@
         <label class="item item-input"><i class="icon ion-search placeholder-icon"></i>
       <input type="text" placeholder="Search" ng-model="searchbox.$">
     </label>
-
-        <ion-item ng-repeat="name in event|filter:searchbox" style="background-image:url(img/casadecera.jpg);background-repeat:no-repeat;background-position:right" ng-style="{'line-height': '100%'}">
+        <ion-item ng-repeat="name in event|filter:searchbox" class="item-thumbnail-left" ng-style="{'line-height': '100%'}">
+          <img src="img/casadecera.jpg">
 
             <h2>Event Details: {{name.eventName}} in {{name.location}}</h2>
             <h2>Phone Number:{{name.phoneNumber}}</h2>

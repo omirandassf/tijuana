@@ -136,6 +136,7 @@ app.run(function($ionicPlatform) {
       })
       .state('tabs.profile', {
         url: '/profile',
+        cache:false,
         views: {
           'profile': {
             templateUrl: 'templates/profile.html',
@@ -151,11 +152,15 @@ app.run(function($ionicPlatform) {
                       if (err.status == 500) {
                         alert("You are not Logged In, Please Log In!");
                         $state.go('tabs.lobby');
-                      } else{
+                      } else if (err.status == 404){
                         alert("You are not Logged In, Please Log In!");
                         $state.go('tabs.lobby');
                         
+                      }else{
+                        alert("You are not Logged In, Please Log In!");
+                        $state.go('tabs.lobby');
                       }
+                      
 
                     });
 

@@ -1,6 +1,16 @@
 
 .pane {
     background:-webkit-linear-gradient(top, #FF8C00 0%,#efad62 100%)!important;
+    /*background-image:url("img/cecuttijuana.jpeg");*/
+
+}
+img {
+    -webkit-user-drag: none;
+    width: 300px;
+}
+.pane {
+    /*background:-webkit-linear-gradient(top, #FF8C00 0%,#efad62 100%)!important;*/
+    background-image:url("img/cecuttijuana.jpeg");
 
 }
 img {

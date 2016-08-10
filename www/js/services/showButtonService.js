@@ -1,8 +1,15 @@
 angular.module('ShowButon',[])
 .service('ButtonService',function(){
    var service = this;
+   
    var shouldShowButton=false;
-   var shouldShowBarButton=false;
+   
+   // var shouldShowBarButton=false;
+
+   var shouldShowEditButton=false;
+   
+   var shouldShowLogInButton=true;
+
    
    service.setshouldShowMyButton=function(show){
        shouldShowButton=show;
@@ -11,12 +18,19 @@ angular.module('ShowButon',[])
      return shouldShowButton;  
    };
    
-   service.setshouldShowMyBar=function(show){
-      shouldShowBar=show
+   service.setshouldShowEditButton=function(show){
+       shouldShowEditButton=show;
+   };
+   service.getshouldShowEditButton=function(){
+     return shouldShowEditButton;  
+   };
+   
+   service.setshouldShowLogInButton=function(mybutton){
+      shouldShowLogInButton=mybutton;
       
    };
-   service.getshouldShowMyBar=function(show){
-     return shouldShowBar; 
+   service.getshouldShowLogInButton=function(){
+    return shouldShowLogInButton; 
    };
    
     

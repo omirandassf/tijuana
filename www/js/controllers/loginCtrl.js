@@ -33,6 +33,9 @@ angular.module('starter.controllers')
 
             $scope.signIn = function(form) {
                 ButtonService.setshouldShowMyButton(true);
+                ButtonService.setshouldShowEditButton(true);
+                ButtonService.setshouldShowLogInButton(false);
+
                 doctorsRest.logUser($scope.user).then(function(response) {
                     // handle different responses and decide what happens next
                     if (response.status == 200) {

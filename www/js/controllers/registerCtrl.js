@@ -12,6 +12,8 @@ angular.module('starter.controllers')
                     // handle different responses and decide what happens next
                     if (response.status == 200) {
                         ButtonService.setshouldShowMyButton(true);
+                        ButtonService.setshouldShowEditButton(true);
+                        ButtonService.setshouldShowLogInButton(false);
                         $window.localStorage.token=response.data.token;
                         $window.localStorage.userId=response.data.id;
                         $scope.user = {};

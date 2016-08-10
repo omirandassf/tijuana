@@ -1,9 +1,18 @@
 <ion-view title="Profile">
 
 
-    <ion-nav-buttons side="left">
+    <ion-nav-buttons side="right">
         <button class="button button-icon icon ion-camera" ng-click="upload()"></button>
     </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+    <a class="button button-clear button-stable" ui-sref="login" ng-show="shouldShowLogInButton">
+        Log In
+      </a>
+  </ion-nav-buttons>
+    <!--ng-show="shouldShowButtonLogIn"-->
+    
+    
+    
     <ion-content scroll=true>
         <div class="row row-center">
             <div class="col text-center">
@@ -22,7 +31,7 @@
                     <h2>Description:{{user.description}}</h2>
 
                
-            <button class="button button-block button-energized" ng-click="modal.show()">
+            <button class="button button-block button-energized" ng-click="modal.show()" ng-show="shouldShowButton">
     Edit
 </button>
  </div>

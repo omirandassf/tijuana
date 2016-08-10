@@ -22,6 +22,9 @@ function($scope,$window,$state,doctorsRest,ButtonService) {
 
     $scope.logOut=function(){
          $scope.shouldShowButton=ButtonService.setshouldShowMyButton(false);
+        $scope.shouldShowButton=ButtonService.setshouldShowEditButton(false);
+        $scope.shouldShowButton=ButtonService.setshouldShowLogInButton(true);
+
          doctorsRest.logOut();
          $window.localStorage.token="";
          $window.localStorage.userId="";
